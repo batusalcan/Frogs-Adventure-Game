@@ -25,13 +25,13 @@
 ## 📸 Screenshots
 
 ### 🎮 Main Menu
-![Main Menu](Screenshots/Screenshot1.png)
+![Main Menu](Screenshots/Screenshot1.jpg)
 
 ### 🌿 Level 1 Gameplay
-![Level 1](Screenshots/Screenshot2.png)
+![Level 1](Screenshots/Screenshot2.jpg)
 
 ### 🧱 Level 2 Gameplay
-![Level 2](Screenshots/Screenshot3.png)
+![Level 2](Screenshots/Screenshot3.jpg)
 
 ---
 
