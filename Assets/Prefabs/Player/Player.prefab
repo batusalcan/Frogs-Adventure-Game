@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8910656619236948022}
   - component: {fileID: 1060989851508237641}
   - component: {fileID: 4621454307352000529}
+  - component: {fileID: 3130767470209012296}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -38,6 +39,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4124022058116061557}
+  - {fileID: 4356862346761461535}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3654277572115227191
@@ -101,7 +103,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1255601055757980850}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 71fc475e6e4e040d68540609113454b4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -184,8 +186,10 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
+  dashSpeed: 15
+  dashDuration: 0.2
+  dashCooldown: 1
   coyoteTime: 0.25
-  extraJumps: 1
   wallJumpX: 2000
   wallJumpY: 750
   jumpSound: {fileID: 8300000, guid: c8cf2e945857f4a318e84284711965ee, type: 3}
@@ -235,7 +239,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  fireballSound: {fileID: 8300000, guid: a66300b2ee2f94e309300c8a7cf61b11, type: 3}
+  fireballSound: {fileID: 8300000, guid: 3276ca705ebb64ae8b1bc4c4f3f9d153, type: 3}
+  emptyFireSound: {fileID: 8300000, guid: 11900645f57164ad686d2dfe19c96c53, type: 3}
+  maxAmmo: 5
+  ammoText: {fileID: 0}
+  ammoUIContainer: {fileID: 0}
 --- !u!114 &1060989851508237641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +264,7 @@ MonoBehaviour:
   - {fileID: 1746538238047840024}
   deathSound: {fileID: 8300000, guid: 31f9caaa0990c4fb48677b41c3b3cd23, type: 3}
   hurtSound: {fileID: 8300000, guid: 548d4cc2e17354d6a955d009c914bac0, type: 3}
+  spawnSound: {fileID: 8300000, guid: 847b191ed654849f08bc8880af92b57b, type: 3}
 --- !u!114 &4621454307352000529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +278,108 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpointSound: {fileID: 8300000, guid: 781f10e3d7ff24091afd97c6df8dea2b, type: 3}
+--- !u!114 &3130767470209012296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255601055757980850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de309641bb56d42ea99046841515d6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkDuration: 10
+  shrinkScale: 2.5
+  normalScale: 5
+  invisDuration: 10
+  invisAlpha: 0.5
+  magnetDuration: 10
+  magnetFieldObject: {fileID: 3167876216418511269}
+  heavyDuration: 10
+  heavyColor: {r: 0.24870951, g: 0.764151, b: 0.2816101, a: 1}
+--- !u!1 &3167876216418511269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4356862346761461535}
+  - component: {fileID: 1407789649308081791}
+  - component: {fileID: 2924837565483008665}
+  m_Layer: 10
+  m_Name: MagnetField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4356862346761461535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167876216418511269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7625490141292361963}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1407789649308081791
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167876216418511269}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &2924837565483008665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167876216418511269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42314531ad0c45aa96a50c352673810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pullSpeed: 10
 --- !u!1 &4214305445740986184
 GameObject:
   m_ObjectHideFlags: 0

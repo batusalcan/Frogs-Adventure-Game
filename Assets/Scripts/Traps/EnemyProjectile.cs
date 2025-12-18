@@ -26,7 +26,18 @@ public class EnemyProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision); //base lets you automatically access the parent script
+        base.OnTriggerEnter2D(collision); 
+        
+        if (collision.gameObject.name == "MagnetField") 
+        {
+            return; 
+        }
+        
+        if (collision.isTrigger && !collision.CompareTag("Player"))
+        {
+            return;
+        }
+        
         gameObject.SetActive(false);
     }
 }

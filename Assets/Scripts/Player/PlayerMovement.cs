@@ -12,6 +12,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    
+    [Header("Dash Info")]
+    [SerializeField] private float dashSpeed = 15f;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashCooldown = 1f;
+    private bool isDashing;
+    private float dashTimer;
+    
+    
     private Animator animator;
     private BoxCollider2D boxCollider;
     private float wallJumpCooldown;
@@ -23,8 +32,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float coyoteTime;
     private float coyoteCounter;
     
-    [Header("Multiple Jumps")]
-    [SerializeField] private int extraJumps;
+   
     private int jumpCounter;
 
     [Header("Wall Jumping")] 
@@ -60,10 +68,25 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        horizontalInput = Input.GetAxis("Horizontal");
+        
+        if (isDashing)
+        {
+            return; 
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && GameManager.instance.IsSkillUnlocked("Dash"))
+        {
+            StartCoroutine(Dash());
+        }
+
+        dashTimer -= Time.deltaTime;
+        
+        horizontalInput = Input.GetAxisRaw("Horizontal");
         
         //flip player when moving left-right
 
+        /*
         if (horizontalInput > 0.01f)
         {
             transform.localScale = new Vector3(5,5,5);
@@ -72,6 +95,21 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < -0.01f)
         {
             transform.localScale = new Vector3(-5, 5, 5);
+        }
+        */
+        float currentScaleX = Mathf.Abs(transform.localScale.x);
+        float currentScaleY = transform.localScale.y;
+        float currentScaleZ = transform.localScale.z;
+
+        if (horizontalInput > 0.01f)
+        {
+            
+            transform.localScale = new Vector3(currentScaleX, currentScaleY, currentScaleZ);
+        }
+        else if (horizontalInput < -0.01f)
+        {
+            
+            transform.localScale = new Vector3(-currentScaleX, currentScaleY, currentScaleZ);
         }
         
         
@@ -92,8 +130,10 @@ public class PlayerMovement : MonoBehaviour
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
         }
+        
+        bool canWallJump = GameManager.instance.IsSkillUnlocked("WallJump");
 
-        if (onWall())
+        if (canWallJump && onWall())
         {
             body.gravityScale = 0;
             body.velocity = Vector2.zero;
@@ -105,8 +145,12 @@ public class PlayerMovement : MonoBehaviour
 
             if (isGrounded())
             {
-                coyoteCounter = coyoteTime; //reset when on ground
-                jumpCounter = extraJumps;
+                if (body.velocity.y <= 0.1f)
+                {
+                    coyoteCounter = coyoteTime; //reset when on ground
+                    jumpCounter = GameManager.instance.IsSkillUnlocked("DoubleJump") ? 1 : 0;
+                }
+                
             }
             else
             {
@@ -115,16 +159,41 @@ public class PlayerMovement : MonoBehaviour
         }
         
     }
+    
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        
+        
+        float originalGravity = body.gravityScale;
+        body.gravityScale = 0;
+
+      
+        float direction = Mathf.Sign(transform.localScale.x);
+        body.velocity = new Vector2(direction * dashSpeed, 0);
+
+        
+        animator.SetTrigger("dash"); 
+
+        yield return new WaitForSeconds(dashDuration);
+
+        
+        body.gravityScale = originalGravity;
+        isDashing = false;
+        dashTimer = dashCooldown;
+    }
 
     private void Jump()
     {
-        if (coyoteCounter < 0 && !onWall() && jumpCounter <= 0)
+        bool canWallJump = GameManager.instance.IsSkillUnlocked("WallJump") && onWall();
+        
+        if (coyoteCounter < 0 && !canWallJump && jumpCounter <= 0)
         {
             return;
         }
         SoundManager.instance.PlaySound(jumpSound);
 
-        if (onWall())
+        if (canWallJump)
         {
             wallJump();
         }
@@ -133,12 +202,14 @@ public class PlayerMovement : MonoBehaviour
             if (isGrounded())
             {
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
+                coyoteCounter = 0;
             }
             else
             {
                 if (coyoteCounter > 0)
                 {
                     body.velocity = new Vector2(body.velocity.x, jumpPower);
+                    coyoteCounter = 0;
                 }
                 else
                 {

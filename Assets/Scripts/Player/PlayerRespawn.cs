@@ -25,6 +25,8 @@ public class PlayerRespawn : MonoBehaviour
         }
         transform.position = currentCheckpoint.position;
         playerHealth.Respawn();
+        
+        GetComponent<PlayerAttack>().RefillAmmoFull();
 
         Camera.main.GetComponent<CameraController>().MoveToNewRoom(currentCheckpoint.parent);
     }

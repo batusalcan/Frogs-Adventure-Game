@@ -13,11 +13,31 @@ public class Healthbar : MonoBehaviour
 
     private void Start()
     {
-        totalhealthBar.fillAmount = playerHealth.currentHealth / 10;
+        if (playerHealth == null)
+        {
+            
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerHealth = player.GetComponent<Health>();
+            }
+            else
+            {
+                Debug.LogError("Healthbar: Sahnede 'Player' etiketli obje bulunamadı!");
+            }
+        }
+        
+        if (playerHealth != null)
+        {
+            totalhealthBar.fillAmount = playerHealth.currentHealth / 10;
+        }
     }
 
     private void Update()
     {
-        currenthealthBar.fillAmount = playerHealth.currentHealth / 10;
+        if (playerHealth != null)
+        {
+            currenthealthBar.fillAmount = playerHealth.currentHealth / 10;
+        }
     }
 }

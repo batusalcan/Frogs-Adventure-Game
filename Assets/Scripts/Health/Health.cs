@@ -21,15 +21,41 @@ public class Health : MonoBehaviour
   [SerializeField]private Behaviour[] components;
   private bool invulnerable;
   
-  [Header("Death Sound")]
+  [Header("Sounds")]
   [SerializeField]private AudioClip deathSound;
   [SerializeField]private AudioClip hurtSound;
+  [SerializeField] private AudioClip spawnSound;
+  
+  private Rigidbody2D body;
 
   private void Awake()
   {
+    float calculadetHealth = 1;
+
+    if (GameManager.instance.IsSkillUnlocked("ExtraHealth_1"))
+    {
+      calculadetHealth += 1;
+    }
+    if (GameManager.instance.IsSkillUnlocked("ExtraHealth_2"))
+    {
+      calculadetHealth += 1;
+    }
+
+    startingHealth = calculadetHealth;
     currentHealth = startingHealth;
+    
     anim = GetComponent<Animator>();
     spriteRend = GetComponent<SpriteRenderer>();
+
+    body = GetComponent<Rigidbody2D>();
+  }
+  
+  private void Start()
+  {
+    if (spawnSound != null)
+    {
+      SoundManager.instance.PlaySound(spawnSound);
+    }
   }
 
   public void TakeDamage(float _damage)
@@ -62,6 +88,9 @@ public class Health : MonoBehaviour
         
         dead = true;
         SoundManager.instance.PlaySound(deathSound);
+        
+        body.velocity = Vector2.zero; 
+        body.bodyType = RigidbodyType2D.Static;
       }
     }
   }
@@ -97,12 +126,20 @@ public class Health : MonoBehaviour
     AddHealth(startingHealth);
     anim.ResetTrigger("die");
     anim.Play("Spawn");
+    
+    if (spawnSound != null)
+    {
+      SoundManager.instance.PlaySound(spawnSound);
+    }
+    
     StartCoroutine(Invulnerability());
     
     foreach (Behaviour component in components)
     {
       component.enabled = true;
     }
+    
+    body.bodyType = RigidbodyType2D.Dynamic;
   }
 
  
