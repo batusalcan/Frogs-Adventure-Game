@@ -4,6 +4,7 @@
 > *Jump, Dash, and Morph to save the Lilypad Kingdom!*
 
 ![Game Banner](https://via.placeholder.com/800x400?text=Frog%27s+Adventure+Banner)
+
 ## 🚧 Project Status: Work in Progress (WIP)
 **Current State:** Development / Portfolio Project
 * **Content:** 3 Playable Levels (World 1) + 1 Special Demo Level.
@@ -13,12 +14,35 @@
 
 ## 📖 About The Game
 
-**Frog's Adventure** is a 2D side-scrolling platformer where players control **Frobert**, a brave frog on a quest to rescue **Princess Lily** from the evil **Dragon Lord Drako**.
+<table>
+  <tr>
+    <td width="70%" valign="top">
+      <h3>The Story & Gameplay</h3>
+      <p>
+        <strong>Frog's Adventure</strong> is a 2D side-scrolling platformer where players control <strong>Frobert</strong>, a brave frog on a quest to rescue <strong>Princess Lily</strong> from the evil <strong>Dragon Lord Drako</strong>.
+      </p>
+      <p>
+        Unlike typical platformers, Frobert evolves throughout the journey. Starting with a simple jump, players collect <strong>Cherries</strong> 🍒 to buy permanent upgrades from a <strong>Skill Tree</strong> and use magical <strong>Fruit Power-Ups</strong> to solve environmental puzzles.
+      </p>
+      <p>
+        <em>But rumors say Frobert is no ordinary frog... hidden <strong>Pineapples</strong> 🍍 scattered across the world might reveal his true form!</em>
+      </p>
+    </td>
+    <td width="30%" valign="top">
+      <img src="Assets/poster.png" alt="Frog's Adventure Poster" width="100%">
+    </td>
+  </tr>
+</table>
 
-Unlike typical platformers, Frobert evolves throughout the journey. Starting with a simple jump, players collect **Cherries** 🍒 to buy permanent upgrades from a **Skill Tree** and use magical **Fruit Power-Ups** to solve environmental puzzles.
+---
 
-### 📜 The Story
-The Lilypad Kingdom was peaceful until Drako kidnapped Princess Lily to steal her magic. Frobert, the kingdom's only hope, must travel through the **Whispering Forest**, the tricky **Pink Lands**, and finally infiltrate **Drako's Castle**. But rumors say Frobert is no ordinary frog... hidden **Pineapples** 🍍 scattered across the world might reveal his true form!
+## 🎥 Gameplay Showcase
+
+### Main Gameplay
+[![Main Gameplay Video](https://img.youtube.com/vi/6Ye4q9SZL-A/0.jpg)](https://www.youtube.com/watch?v=6Ye4q9SZL-A)
+
+### Demo Level (Features Showcase)
+[![Demo Level Video](https://img.youtube.com/vi/6Ye4q9SZL-A/0.jpg)](https://www.youtube.com/watch?v=6Ye4q9SZL-A)
 
 ---
 
@@ -48,18 +72,15 @@ A unique mechanic for completionists:
 
 ## 📸 Screenshots
 
-| **Classic Platforming** | **Combat & Traps** |
+| **Main Menu** | **Level Select Menu** |
 |:---:|:---:|
-| ![Level 1](https://via.placeholder.com/400x250?text=Whispering+Forest) | ![Combat](https://via.placeholder.com/400x250?text=Combat+System) |
-| *Navigating the Whispering Forest* | *Fighting Slimes and dodging Traps* |
+| ![Main Menu](Assets/main_menu.png) | ![Level Select](Assets/level_select.png) |
+| *The gateway to the adventure* | *Choose your path across 3 Worlds* |
 
-| **Skill Tree UI** | **Puzzle Solving** |
+| **Skill Tree System** | **Level Example** |
 |:---:|:---:|
-| ![Skill Tree](https://via.placeholder.com/400x250?text=Skill+Tree+System) | ![PowerUps](https://via.placeholder.com/400x250?text=Fruit+Power+Ups) |
-| *Upgrading Frobert's abilities* | *Using Banana to shrink* |
-
-### 🎥 Gameplay Video
-[![Watch the Video](https://via.placeholder.com/600x300?text=Watch+Gameplay+Demo)](LINK_TO_YOUR_YOUTUBE_VIDEO_HERE)
+| ![Skill Tree](Assets/skill_tree.png) | ![Level Gameplay](Assets/level_gameplay.png) |
+| *Upgrade Frobert's abilities with Cherries* | *Action-packed platforming in World 1* |
 
 ---
 
@@ -81,7 +102,7 @@ Since the game is currently in development, there is no pre-built `.exe` file. Y
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/FrogsAdventure.git](https://github.com/batusalcan/Frogs-Adventure-Game.git)
+    git clone [https://github.com/YOUR_USERNAME/FrogsAdventure.git](https://github.com/YOUR_USERNAME/FrogsAdventure.git)
     ```
 2.  **Open in Unity:**
     * Launch **Unity Hub**.
