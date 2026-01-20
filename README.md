@@ -134,4 +134,11 @@ Since the game is currently in development, there is no pre-built `.exe` file. Y
 
 ---
 
-*Thank you for visiting my portfolio project! Detailed documentation is available in the `GameDesignDocument.pdf` included in the repo.*
+*Thank you for visiting my portfolio project!*
+
+## 📂 Documentation
+If you want to dive deeper into the design and development process, check out the documents included in this repo:
+* 📄 **[Game Design Document (PDF)](Docs/GameDesignDocument.pdf):** Detailed mechanics, story, and systems.
+* 📊 **[Project Presentation (PDF)](Docs/FrogsAdventurePresentation.pdf):** A visual summary of the game's features and art.
+
+---
