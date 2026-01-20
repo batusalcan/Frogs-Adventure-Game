@@ -3,8 +3,6 @@
 > **A Pixel-Art Action Platformer developed in Unity.**
 > *Jump, Dash, and Morph to save the Lilypad Kingdom!*
 
-![Game Banner](https://via.placeholder.com/800x400?text=Frog%27s+Adventure+Banner)
-
 ## 🚧 Project Status: Work in Progress (WIP)
 **Current State:** Development / Portfolio Project
 * **Content:** 3 Playable Levels (World 1) + 1 Special Demo Level.
@@ -74,12 +72,12 @@ A unique mechanic for completionists:
 
 | **Main Menu** | **Level Select Menu** |
 |:---:|:---:|
-| ![Main Menu](Assets/main_menu.jpg) | ![Level Select](Assets/level_select.jpg) |
+| <img src="Assets/main_menu.jpg" width="100%"> | <img src="Assets/level_select.jpg" width="100%"> |
 | *The gateway to the adventure* | *Choose your path across 3 Worlds* |
 
 | **Skill Tree System** | **Level Example** |
 |:---:|:---:|
-| ![Skill Tree](Assets/skill_tree.jpg) | ![Level Gameplay](Assets/level_gameplay.jpg) |
+| <img src="Assets/skill_tree.jpg" width="100%"> | <img src="Assets/level_gameplay.jpg" width="100%"> |
 | *Upgrade Frobert's abilities with Cherries* | *Action-packed platforming in World 1* |
 
 ---
@@ -102,7 +100,7 @@ Since the game is currently in development, there is no pre-built `.exe` file. Y
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/FrogsAdventure.git](https://github.com/YOUR_USERNAME/FrogsAdventure.git)
+    git clone [https://github.com/batusalcan/Frogs-Adventure-Game.git](https://github.com/batusalcan/Frogs-Adventure-Game.git)
     ```
 2.  **Open in Unity:**
     * Launch **Unity Hub**.
