@@ -52,9 +52,12 @@ public class Spikehead : EnemyDamage
 
          if (hit.collider != null && !attacking)
          {
-            attacking = true;
-            destination = directions[i];
-            checkTimer = 0;
+            if (hit.collider.CompareTag("Player"))
+            {
+               attacking = true;
+               destination = directions[i];
+               checkTimer = 0;
+            }
          }
       }
    }

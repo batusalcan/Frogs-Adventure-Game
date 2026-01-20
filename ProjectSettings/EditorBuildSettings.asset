@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Level 6.unity
     guid: 10776f55ff96246479d6cd6e09c1485f
+  - enabled: 1
+    path: Assets/Levels/DemoLevel.unity
+    guid: 530e97d8ccf68413989e14f9ef2c9991
   m_configObjects: {}

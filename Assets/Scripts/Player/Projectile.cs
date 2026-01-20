@@ -27,15 +27,25 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Cherry") || collision.CompareTag("Collectible") || collision.GetComponent<CherryCollectible>() != null)
+        {
+            return;
+        }
+        
+
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("collide");
 
-        if (collision.tag == "Enemy")
+        if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Health>().TakeDamage(1);
+       
+            Health enemyHealth = collision.GetComponent<Health>();
+            if(enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(1);
+            }
         }
-        
     }
     public void SetDirection(float _direction)
     {

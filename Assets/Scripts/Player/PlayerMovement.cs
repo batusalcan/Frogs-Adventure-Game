@@ -78,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashTimer <= 0 && GameManager.instance.IsSkillUnlocked("Dash"))
         {
             StartCoroutine(Dash());
+            return;
         }
 
         dashTimer -= Time.deltaTime;
@@ -119,14 +120,14 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("grounded",isGrounded());
         
         //jump
-        if (canMove && Input.GetKeyDown(KeyCode.Space))
+        if (canMove && Input.GetKeyDown(KeyCode.UpArrow))
         {
             animator.SetTrigger("jump");
             Jump();
         }
         
         //adjustable jump height
-        if (Input.GetKeyUp(KeyCode.Space) && body.velocity.y > 0)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && body.velocity.y > 0)
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y / 2);
         }
@@ -137,9 +138,12 @@ public class PlayerMovement : MonoBehaviour
         {
             body.gravityScale = 0;
             body.velocity = Vector2.zero;
+            animator.SetBool("onWall", true);
+            animator.Play("WallJump");
         }
         else
         {
+            animator.SetBool("onWall", false);
             body.gravityScale = 7;
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 

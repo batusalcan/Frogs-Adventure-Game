@@ -172,9 +172,10 @@ MonoBehaviour:
   numberOfFlashes: 0
   components:
   - {fileID: 5042159004927275950}
-  - {fileID: 0}
+  - {fileID: 5558398288713514176, guid: bd6dffe93e8784564af709d39ff487bb, type: 3}
   deathSound: {fileID: 8300000, guid: 31f9caaa0990c4fb48677b41c3b3cd23, type: 3}
   hurtSound: {fileID: 8300000, guid: 548d4cc2e17354d6a955d009c914bac0, type: 3}
+  spawnSound: {fileID: 0}
 --- !u!114 &5042159004927275950
 MonoBehaviour:
   m_ObjectHideFlags: 0

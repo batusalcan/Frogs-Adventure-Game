@@ -67,6 +67,14 @@ public class UIManager : MonoBehaviour
         
         SceneManager.LoadScene(1);
     }
+    
+    // --- For The Demo ---
+    public void LoadDemoScene()
+    {
+        SceneManager.LoadScene("DemoLevel");
+    }
+    // -------------------------------------
+    
 
     #endregion
 
