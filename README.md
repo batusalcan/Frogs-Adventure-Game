@@ -74,12 +74,12 @@ A unique mechanic for completionists:
 
 | **Main Menu** | **Level Select Menu** |
 |:---:|:---:|
-| ![Main Menu](Assets/main_menu.png) | ![Level Select](Assets/level_select.png) |
+| ![Main Menu](Assets/main_menu.jpg) | ![Level Select](Assets/level_select.jpg) |
 | *The gateway to the adventure* | *Choose your path across 3 Worlds* |
 
 | **Skill Tree System** | **Level Example** |
 |:---:|:---:|
-| ![Skill Tree](Assets/skill_tree.png) | ![Level Gameplay](Assets/level_gameplay.png) |
+| ![Skill Tree](Assets/skill_tree.jpg) | ![Level Gameplay](Assets/level_gameplay.jpg) |
 | *Upgrade Frobert's abilities with Cherries* | *Action-packed platforming in World 1* |
 
 ---
